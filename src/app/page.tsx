@@ -10,31 +10,7 @@ import {
   MessageSquare,
   Shield,
 } from "lucide-react";
-
-interface StrategyConfig {
-  name: string;
-  description: string;
-  platform: string;
-  conditions: Array<{
-    type: string;
-    field: string;
-    operator: string;
-    value: number | [number, number];
-    unit?: string;
-  }>;
-  action: { type: string; amount: number; amount_type: string };
-  risk: {
-    max_position: number;
-    stop_loss?: number;
-    take_profit?: number;
-    max_daily_trades: number;
-  };
-  schedule: {
-    check_interval_seconds: number;
-    active_hours?: { start: string; end: string } | null;
-    active_days?: string[] | null;
-  };
-}
+import type { StrategyConfig } from "@/lib/strategy-parser";
 
 const EXAMPLES = [
   "If Bitcoin is above $95K on Friday and Kalshi YES odds are under 40 cents, buy 10 contracts",
