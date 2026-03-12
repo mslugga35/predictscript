@@ -189,7 +189,7 @@ export default function Home() {
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Stop loss</span>
                   <span className="text-zinc-200">
-                    {result.config.risk.stop_loss
+                    {result.config.risk.stop_loss != null
                       ? `${result.config.risk.stop_loss}%`
                       : "None"}
                   </span>
@@ -197,7 +197,7 @@ export default function Home() {
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Take profit</span>
                   <span className="text-zinc-200">
-                    {result.config.risk.take_profit
+                    {result.config.risk.take_profit != null
                       ? `${result.config.risk.take_profit}%`
                       : "None"}
                   </span>

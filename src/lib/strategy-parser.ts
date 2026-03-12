@@ -79,11 +79,12 @@ If the user's description is ambiguous, make reasonable defaults:
 - Default stop_loss: 30%
 - Default take_profit: 50%`;
 
+// Module-scoped client — reused across requests (one per cold start)
+const anthropic = new Anthropic();
+
 export async function parseStrategy(
   description: string
 ): Promise<{ config: StrategyConfig; explanation: string }> {
-  const anthropic = new Anthropic();
-
   const response = await anthropic.messages.create({
     model: "claude-sonnet-4-6",
     max_tokens: 1024,
@@ -97,21 +98,22 @@ export async function parseStrategy(
   });
 
   const text =
-    response.content[0].type === "text" ? response.content[0].text : "";
+    response.content[0]?.type === "text" ? response.content[0].text : "";
 
   let config: StrategyConfig;
   try {
     config = JSON.parse(text);
-  } catch {
+  } catch (parseErr) {
+    console.error("Initial JSON parse failed:", parseErr);
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
       config = JSON.parse(jsonMatch[0]);
     } else {
+      console.error("Raw response that failed to parse:", text);
       throw new Error("Failed to parse strategy config");
     }
   }
 
-  // Generate human-readable explanation
   const explainResponse = await anthropic.messages.create({
     model: "claude-haiku-4-5-20251001",
     max_tokens: 256,
@@ -124,7 +126,7 @@ export async function parseStrategy(
   });
 
   const explanation =
-    explainResponse.content[0].type === "text"
+    explainResponse.content[0]?.type === "text"
       ? explainResponse.content[0].text
       : "";
 
