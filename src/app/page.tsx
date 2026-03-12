@@ -77,20 +77,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
       {/* Hero */}
-      <div className="max-w-3xl mx-auto px-4 pt-16 pb-8">
-        <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-sm text-zinc-400">
+      <div className="relative max-w-3xl mx-auto px-4 pt-20 pb-10">
+        <div className="terminal-glow" />
+        <div className="text-center space-y-5 relative">
+          <div className="animate-fade-up inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800 text-sm text-zinc-400 backdrop-blur-sm">
             <Terminal className="w-4 h-4 text-orange-400" />
             Kalshi + Polymarket
           </div>
-          <h1 className="text-5xl font-bold tracking-tight">
+          <h1 className="animate-fade-up-delay-1 text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
             Describe Your Strategy
             <br />
-            <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent">
               We Build the Bot
             </span>
           </h1>
-          <p className="text-lg text-zinc-400 max-w-xl mx-auto">
+          <p className="animate-fade-up-delay-2 text-lg text-zinc-400 max-w-xl mx-auto leading-relaxed">
             Type your prediction market strategy in plain English. PredictScript
             converts it to executable code with backtesting and risk controls.
           </p>
