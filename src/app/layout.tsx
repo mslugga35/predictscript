@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, Fira_Code } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -15,12 +15,17 @@ const firaCode = Fira_Code({
   weight: ["400", "500"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#080608",
+};
+
 export const metadata: Metadata = {
   title: "PredictScript — Natural Language Prediction Market Strategies",
   description:
     "Describe your Kalshi or Polymarket trading strategy in plain English. We turn it into a working bot with backtesting and risk controls.",
   metadataBase: new URL("https://getpredictscript.com"),
-  viewport: "width=device-width, initial-scale=1",
   alternates: { canonical: "https://getpredictscript.com" },
   openGraph: {
     title: "PredictScript — Natural Language Prediction Market Strategies",
@@ -74,7 +79,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#080608" />
       </head>
       <body
         className={`${outfit.variable} ${firaCode.variable} antialiased`}

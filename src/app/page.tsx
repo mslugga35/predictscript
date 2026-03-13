@@ -792,12 +792,8 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Spin keyframe injected inline */}
+      {/* Mobile layout overrides */}
       <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
         @media (max-width: 640px) {
           .result-grid { grid-template-columns: 1fr !important; }
           .waitlist-feature-grid { grid-template-columns: 1fr !important; }
