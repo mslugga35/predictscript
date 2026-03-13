@@ -533,6 +533,50 @@ body {
 }
 
 /* =====================
+   SCREEN READER ONLY
+   ===================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* =====================
+   SKIP TO CONTENT
+   ===================== */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+  background: var(--brand-orange);
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.skip-to-content:focus {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+/* =====================
    SCROLLBAR GLOBAL
    ===================== */
 ::-webkit-scrollbar { width: 6px; }

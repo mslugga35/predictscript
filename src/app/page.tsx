@@ -88,10 +88,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: "var(--background)", color: "var(--foreground)" }}>
+    <div id="main-content" className="min-h-screen" style={{ background: "var(--background)", color: "var(--foreground)" }}>
 
       {/* ── HERO ─────────────────────────────────────── */}
-      <section className="relative max-w-4xl mx-auto px-6 pt-16 pb-6 text-center overflow-hidden">
+      <section aria-label="Hero" className="relative max-w-4xl mx-auto px-6 pt-16 pb-6 text-center overflow-hidden">
         <div className="hero-glow-primary" />
 
         {/* Status badge */}
@@ -294,6 +294,7 @@ export default function Home() {
             onClick={handleParse}
             disabled={loading || description.trim().length < 10}
             className="parse-btn"
+            aria-label="Parse your prediction market strategy"
           >
             {loading ? (
               <>
@@ -559,7 +560,7 @@ export default function Home() {
       )}
 
       {/* ── WAITLIST SECTION ─────────────────────────── */}
-      <section className="waitlist-section" style={{ background: "rgba(0,0,0,0.2)", padding: "60px 0 60px" }}>
+      <section aria-label="Early access waitlist" className="waitlist-section" style={{ background: "rgba(0,0,0,0.2)", padding: "60px 0 60px" }}>
         <div className="waitlist-inner max-w-2xl mx-auto px-6">
 
           {/* Section label */}
@@ -658,13 +659,16 @@ export default function Home() {
                 padding: "8px",
               }}
             >
+              <label htmlFor="waitlist-email" className="sr-only">Email address</label>
               <input
+                id="waitlist-email"
                 type="email"
                 value={waitlistEmail}
                 onChange={(e) => setWaitlistEmail(e.target.value)}
                 placeholder="your@email.com"
                 className="waitlist-input"
                 style={{ border: "none", background: "transparent", boxShadow: "none" }}
+                aria-label="Your email address for early access"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") handleWaitlist();
                 }}
@@ -673,6 +677,7 @@ export default function Home() {
                 onClick={handleWaitlist}
                 disabled={waitlistLoading || !waitlistEmail.includes("@")}
                 className="waitlist-btn"
+                aria-label="Join the early access waitlist"
                 style={{
                   opacity: (!waitlistEmail.includes("@") && !waitlistLoading) ? 0.5 : 1,
                   cursor: !waitlistEmail.includes("@") ? "not-allowed" : "pointer",
