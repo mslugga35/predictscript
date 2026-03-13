@@ -39,7 +39,7 @@ body {
   top: -60px;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
+  width: min(600px, 100vw);
   height: 350px;
   background: radial-gradient(ellipse at 50% 30%,
     rgba(234, 88, 12, 0.1) 0%,
@@ -574,6 +574,31 @@ body {
   width: auto;
   height: auto;
   overflow: visible;
+}
+
+/* =====================
+   MOBILE RESPONSIVE
+   ===================== */
+@media (max-width: 640px) {
+  .waitlist-input {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .waitlist-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .result-card {
+    padding: 16px;
+  }
+
+  .command-surface {
+    padding: 16px !important;
+  }
 }
 
 /* =====================

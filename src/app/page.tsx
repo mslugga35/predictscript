@@ -256,7 +256,7 @@ export default function Home() {
               marginBottom: "14px",
             }}
           >
-            <span style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.18)", fontFamily: "var(--font-mono)" }}>
+            <span className="kbd-hint-desktop" style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.18)", fontFamily: "var(--font-mono)" }}>
               ⌘ + Enter to parse
             </span>
           </div>
@@ -387,7 +387,7 @@ export default function Home() {
           </div>
 
           {/* Conditions + Risk side by side */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+          <div className="result-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
 
             {/* Conditions */}
             <div className="result-card">
@@ -589,6 +589,7 @@ export default function Home() {
 
           {/* Feature highlights */}
           <div
+            className="waitlist-feature-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
@@ -650,6 +651,7 @@ export default function Home() {
             </div>
           ) : (
             <div
+              className="waitlist-form-row"
               style={{
                 display: "flex",
                 gap: "10px",
@@ -724,7 +726,7 @@ export default function Home() {
       {/* ── FOOTER ────────────────────────────────────── */}
       <footer className="site-footer" style={{ padding: "36px 0 32px" }}>
         <div
-          className="max-w-2xl mx-auto px-6"
+          className="footer-grid max-w-2xl mx-auto px-6"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr auto",
@@ -800,6 +802,9 @@ export default function Home() {
           .result-grid { grid-template-columns: 1fr !important; }
           .waitlist-feature-grid { grid-template-columns: 1fr !important; }
           .footer-grid { grid-template-columns: 1fr !important; text-align: center; }
+          .waitlist-form-row { flex-direction: column !important; }
+          .waitlist-form-row .waitlist-btn { width: 100%; justify-content: center; }
+          .kbd-hint-desktop { display: none !important; }
         }
       `}</style>
     </div>
