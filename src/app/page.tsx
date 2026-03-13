@@ -746,6 +746,19 @@ export default function Home() {
 
           {/* Right: links */}
           <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            <a
+              href="/blog"
+              style={{
+                fontSize: "0.78rem",
+                fontWeight: 500,
+                color: "rgba(255,255,255,0.35)",
+                textDecoration: "none",
+                letterSpacing: "0.01em",
+                transition: "color 0.15s ease",
+              }}
+            >
+              Blog
+            </a>
             <span
               style={{
                 display: "flex",
