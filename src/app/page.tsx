@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   Terminal,
   Zap,
-  ArrowRight,
   AlertCircle,
   Code2,
   MessageSquare,
@@ -92,12 +91,11 @@ export default function Home() {
     <div className="min-h-screen" style={{ background: "var(--background)", color: "var(--foreground)" }}>
 
       {/* ── HERO ─────────────────────────────────────── */}
-      <section className="relative max-w-4xl mx-auto px-6 pt-24 pb-8 text-center overflow-hidden">
+      <section className="relative max-w-4xl mx-auto px-6 pt-16 pb-6 text-center overflow-hidden">
         <div className="hero-glow-primary" />
-        <div className="hero-glow-secondary" />
 
         {/* Status badge */}
-        <div className="animate-fade-up flex justify-center mb-8">
+        <div className="animate-fade-up flex justify-center mb-5">
           <span className="status-badge">
             <span className="status-badge-dot" />
             Kalshi · Polymarket · Natural Language
@@ -135,7 +133,7 @@ export default function Home() {
             fontSize: "1.0625rem",
             color: "rgba(255,255,255,0.45)",
             maxWidth: "520px",
-            margin: "0 auto 2rem",
+            margin: "0 auto 1.5rem",
             lineHeight: 1.65,
           }}
         >
@@ -163,7 +161,7 @@ export default function Home() {
           borderBottom: "1px solid rgba(255,255,255,0.04)",
           background: "rgba(0,0,0,0.3)",
           padding: "10px 0",
-          marginBottom: "3rem",
+          marginBottom: "2rem",
           cursor: "default",
           userSelect: "none",
         }}
@@ -561,7 +559,7 @@ export default function Home() {
       )}
 
       {/* ── WAITLIST SECTION ─────────────────────────── */}
-      <section className="waitlist-section" style={{ background: "rgba(0,0,0,0.2)", padding: "80px 0 88px" }}>
+      <section className="waitlist-section" style={{ background: "rgba(0,0,0,0.2)", padding: "60px 0 60px" }}>
         <div className="waitlist-inner max-w-2xl mx-auto px-6">
 
           {/* Section label */}
@@ -571,9 +569,6 @@ export default function Home() {
 
           {/* Headline */}
           <div style={{ textAlign: "center", marginBottom: "40px" }}>
-            <div className="waitlist-number" style={{ marginBottom: "4px" }}>
-              Get in Early
-            </div>
             <h2
               style={{
                 fontSize: "1.375rem",
@@ -601,9 +596,9 @@ export default function Home() {
             }}
           >
             {[
-              { icon: "📊", label: "55K+ Markets", sub: "Historical backtest data" },
-              { icon: "🧪", label: "Paper Trading", sub: "Risk-free simulation" },
-              { icon: "⚡", label: "One-Click Deploy", sub: "Kalshi & Polymarket" },
+              { label: "55K+ Markets", sub: "Historical backtest data" },
+              { label: "Paper Trading", sub: "Risk-free simulation" },
+              { label: "One-Click Deploy", sub: "Kalshi & Polymarket" },
             ].map((item) => (
               <div
                 key={item.label}
@@ -624,7 +619,6 @@ export default function Home() {
                   (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.06)";
                 }}
               >
-                <div style={{ fontSize: "1.375rem", marginBottom: "6px" }}>{item.icon}</div>
                 <div style={{ fontSize: "0.8125rem", fontWeight: 700, color: "rgba(255,255,255,0.8)", marginBottom: "3px" }}>
                   {item.label}
                 </div>
@@ -776,7 +770,7 @@ export default function Home() {
           }}
         >
           <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.15)" }}>
-            © 2025 PredictScript. All rights reserved.
+            © 2026 PredictScript. All rights reserved.
           </span>
           <span
             style={{

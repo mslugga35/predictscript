@@ -32,19 +32,6 @@ body {
 }
 
 /* =====================
-   NOISE TEXTURE OVERLAY
-   ===================== */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
-  pointer-events: none;
-  z-index: 100;
-}
-
-/* =====================
    HERO GLOW SYSTEM
    ===================== */
 .hero-glow-primary {
@@ -52,39 +39,15 @@ body::before {
   top: -60px;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 500px;
+  width: 600px;
+  height: 350px;
   background: radial-gradient(ellipse at 50% 30%,
-    rgba(234, 88, 12, 0.18) 0%,
-    rgba(239, 68, 68, 0.1) 35%,
-    rgba(251, 191, 36, 0.05) 55%,
-    transparent 75%
+    rgba(234, 88, 12, 0.1) 0%,
+    rgba(239, 68, 68, 0.05) 45%,
+    transparent 70%
   );
   filter: blur(60px);
   pointer-events: none;
-  animation: glow-breathe 6s ease-in-out infinite alternate;
-}
-
-.hero-glow-secondary {
-  position: absolute;
-  top: 20%;
-  left: 15%;
-  width: 300px;
-  height: 200px;
-  background: radial-gradient(ellipse, rgba(251, 191, 36, 0.06) 0%, transparent 70%);
-  filter: blur(80px);
-  pointer-events: none;
-  animation: glow-drift 8s ease-in-out infinite alternate;
-}
-
-@keyframes glow-breathe {
-  0% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-  100% { opacity: 1; transform: translateX(-50%) scale(1.08); }
-}
-
-@keyframes glow-drift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(40px, -20px); }
 }
 
 /* =====================
@@ -114,21 +77,6 @@ body::before {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slide-in-left {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes clip-reveal {
-  from { clip-path: inset(0 100% 0 0); opacity: 0; }
-  to { clip-path: inset(0 0% 0 0); opacity: 1; }
-}
-
 .animate-fade-up {
   animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -145,11 +93,6 @@ body::before {
 
 .animate-fade-up-delay-3 {
   animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.36s forwards;
-  opacity: 0;
-}
-
-.animate-fade-up-delay-4 {
-  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.48s forwards;
   opacity: 0;
 }
 
@@ -400,15 +343,13 @@ body::before {
 .waitlist-section::before {
   content: '';
   position: absolute;
-  top: -2px;
+  top: -1px;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(234,88,12,0.6) 20%,
-    rgba(251,191,36,0.8) 50%,
-    rgba(239,68,68,0.6) 80%,
+    rgba(234,88,12,0.35) 50%,
     transparent 100%
   );
 }
@@ -426,17 +367,6 @@ body::before {
 .waitlist-inner {
   position: relative;
   z-index: 1;
-}
-
-.waitlist-number {
-  font-size: 4.5rem;
-  font-weight: 800;
-  line-height: 1;
-  background: linear-gradient(135deg, #f97316, #fbbf24);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.03em;
 }
 
 .waitlist-input {
@@ -549,17 +479,6 @@ body::before {
   background-clip: text;
 }
 
-.footer-link {
-  color: rgba(255,255,255,0.3);
-  font-size: 0.8125rem;
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.footer-link:hover {
-  color: rgba(255,255,255,0.7);
-}
-
 /* =====================
    SECTION LABEL
    ===================== */
@@ -611,14 +530,6 @@ body::before {
 @keyframes pulse-dot {
   0%, 100% { box-shadow: 0 0 4px rgba(34,197,94,0.4); }
   50% { box-shadow: 0 0 12px rgba(34,197,94,0.8); }
-}
-
-/* =====================
-   DIVIDER
-   ===================== */
-.divider-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
 }
 
 /* =====================
