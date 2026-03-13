@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   description:
     "Describe your Kalshi or Polymarket trading strategy in plain English. We turn it into a working bot with backtesting and risk controls.",
   metadataBase: new URL("https://getpredictscript.com"),
+  alternates: { canonical: "https://getpredictscript.com" },
   openGraph: {
     title: "PredictScript — Natural Language Prediction Market Strategies",
     description:
