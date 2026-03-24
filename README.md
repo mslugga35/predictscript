@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PredictScript
+
+> Describe your prediction market strategy in plain English. PredictScript parses it into executable logic with risk controls — ready to backtest and deploy.
+
+## What It Does
+
+PredictScript is a natural language interface for building prediction market trading strategies. Tell it your thesis in English, and it automatically:
+
+1. **Parses** your strategy description using Claude AI
+2. **Extracts** conditions (price levels, probabilities, time windows)
+3. **Generates** structured trading logic with risk controls
+4. **Outputs** JSON configs ready for backtesting or live trading
+
+## Stack
+
+- **Framework:** Next.js 16 (React 19)
+- **Styling:** Tailwind CSS 4
+- **AI:** Anthropic Claude API
+- **Deployment:** Vercel
+- **Language:** TypeScript
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- `ANTHROPIC_API_KEY` from [console.anthropic.com](https://console.anthropic.com)
+
+### Local Development
 
 ```bash
+# Copy env template
+cp .env.example .env.local
+
+# Add your Anthropic API key to .env.local
+# ANTHROPIC_API_KEY=sk-ant-...
+
+# Install dependencies
+npm install
+
+# Run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) and start describing strategies.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Routes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### `POST /api/parse`
 
-## Learn More
+Parses a natural language strategy description.
 
-To learn more about Next.js, take a look at the following resources:
+**Request:**
+```json
+{
+  "description": "If Bitcoin is above $95K and Kalshi odds are under 40 cents, buy 10 contracts"
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Response:**
+```json
+{
+  "config": {
+    "name": "btc_break_above_95k",
+    "description": "Buy Kalshi contracts when BTC breaks above $95K with favorable odds.",
+    "platform": "kalshi",
+    "conditions": [
+      {
+        "type": "price",
+        "field": "btc_price",
+        "operator": "gte",
+        "value": 95000,
+        "unit": "dollars"
+      },
+      {
+        "type": "probability",
+        "field": "market_price",
+        "operator": "lte",
+        "value": 40,
+        "unit": "cents"
+      }
+    ],
+    "action": { "type": "buy", "amount": 10, "amount_type": "contracts" },
+    "risk": {
+      "max_position": 100,
+      "stop_loss": 30,
+      "take_profit": 50,
+      "max_daily_trades": 5
+    },
+    "schedule": {
+      "check_interval_seconds": 60,
+      "active_hours": null,
+      "active_days": null
+    }
+  },
+  "explanation": "This strategy buys 10 Kalshi contracts when Bitcoin reaches $95K and market probability is under 40 cents, with a 30% stop loss and 50% take profit."
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Rate Limit:** 5 requests per minute per IP
 
-## Deploy on Vercel
+### `POST /api/waitlist`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Adds an email to the early access waitlist.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Request:**
+```json
+{
+  "email": "user@example.com"
+}
+```
+
+## Roadmap
+
+- [ ] **Backtest Engine** — Run strategies against 55,000+ resolved markets
+- [ ] **Paper Trading** — Simulate live trading with historical data
+- [ ] **Market Browser** — Browse live Kalshi & Polymarket contracts
+- [ ] **One-Click Deploy** — Deploy directly to Kalshi & Polymarket APIs
+- [ ] **Risk Analytics** — Kelly sizing, portfolio optimization, stress testing
+
+## Environment Variables
+
+See `.env.example` for required configuration:
+
+- `ANTHROPIC_API_KEY` — Your Claude API key (required)
+
+## Contributing
+
+This project is maintained as a startup by [mslugga35](https://github.com/mslugga35). Issues and feedback welcome via GitHub.
+
+## Disclaimer
+
+**Not financial advice.** This tool is for educational and simulation purposes only. Do not use real money without fully understanding prediction markets and the risks involved.
+
+## License
+
+MIT
